@@ -80,20 +80,25 @@ function showErrorMessage(message) {
 }
 
 function unlockWebsite() {
-    isUnlocked = true;
-    
-    // Hide password overlay with animation
-    passwordOverlay.classList.add('hidden');
-    
-    // Enable body scroll
-    document.body.style.overflow = 'auto';
-    
-    // Start the main website functionality
+  isUnlocked = true;
+  passwordOverlay.classList.add('hidden');
+  document.body.style.overflow = 'auto';
+
+  // 🌹 Show the apology page first
+  const apologyPage = document.getElementById('apologyPage');
+  apologyPage.classList.remove('hidden');
+  setTimeout(() => apologyPage.classList.add('show'), 100);
+
+  // Wait for user to click "Continue" to show main website
+  document.getElementById('continueButton').addEventListener('click', () => {
+    apologyPage.classList.remove('show');
     setTimeout(() => {
-        initializeWebsite();
-        passwordOverlay.style.display = 'none';
+      apologyPage.style.display = 'none';
+      initializeWebsite(); // Now load your main page
     }, 800);
+  });
 }
+
 
 function initializeWebsite() {
     // Initial counter update
@@ -388,6 +393,7 @@ function addTouchOptimizations() {
     });
 }
 
+
 // Performance optimization: Throttle scroll events
 function throttle(func, limit) {
     let inThrottle;
@@ -490,3 +496,4 @@ document.querySelectorAll('.moment-image img').forEach(img => {
 });
 
 console.log('💖 Our Story in Moments - Love timeline loaded successfully! 💖');
+
