@@ -4,11 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Story in Moments</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff6b9d'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Password Protection Overlay -->
+    <div id="passwordOverlay" class="password-overlay">
+        <div class="password-container">
+            <div class="password-header">
+                <div class="heart-animation">
+                    <div class="heart"></div>
+                    <div class="heart"></div>
+                    <div class="heart"></div>
+                </div>
+                <h1 class="password-title">Our Story in Moments</h1>
+                <p class="password-subtitle">Enter the secret code to unlock our love story</p>
+            </div>
+            <div class="password-form">
+                <div class="input-container">
+                    <input type="password" id="passwordInput" placeholder="Enter secret code" maxlength="10">
+                    <button id="unlockBtn" class="unlock-button">
+                        <i class="fas fa-heart"></i>
+                        <span>Unlock</span>
+                    </button>
+                </div>
+                <div id="errorMessage" class="error-message"></div>
+            </div>
+            <div class="password-footer">
+                <p>Made with love, from me to you</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Background Music -->
     <audio id="backgroundMusic" loop>
         <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
