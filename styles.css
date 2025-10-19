@@ -792,92 +792,107 @@ body {
   from { transform: scale(0.7); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
-/* 🌹 Apology Page Fix */
+/* Apology Page */
 #apologyPage {
   position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at center, #1c1b29 0%, #0f0f15 100%);
-  color: #f4f0ff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: radial-gradient(circle at top left, #1a1a1d, #0d0d0f);
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  flex-direction: column;
+  overflow: hidden; /* 👈 disables scrolling */
   z-index: 1000;
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
-#apologyPage.show {
-  opacity: 1;
-}
-
-.hidden {
-  display: none;
 }
 
 .apology-container {
-  max-width: 700px;
-  width: 90%;
-  margin: 6rem auto 4rem auto; /* 👈 adds breathing space top & bottom */
-  padding: 2rem 1.5rem;
-  background: rgba(255, 255, 255, 0.08);
+  width: 85%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
   border-radius: 20px;
-  box-shadow: 0 0 30px rgba(255, 107, 157, 0.25);
-  backdrop-filter: blur(10px);
-  overflow: visible; /* 👈 allows content to expand naturally */
-  max-height: none; /* 👈 removes any hidden height cap */
+  box-shadow: 0 0 25px rgba(255, 107, 157, 0.25);
+  padding: 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: fadeInUp 0.9s ease forwards;
 }
 
 .apology-container h1 {
   font-family: 'Dancing Script', cursive;
-  font-size: 2.3rem;
+  font-size: 1.9rem;
   color: #ff6b9d;
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
+  margin-bottom: 1.2rem;
 }
 
 .apology-text {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #f0f0f0;
-  text-align: justify; /* 👈 makes it more readable for longer text */
-  margin-bottom: 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #f2f2f2;
+  text-align: justify;
+  margin-bottom: 1.5rem;
+}
+
+.recent-section {
+  background: rgba(255, 255, 255, 0.07);
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 0.9rem;
 }
 
 .recent-section h2 {
-  color: #ff6b9d;
+  text-align: center;
+  color: #ff91b6;
   font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
 }
 
 .recent-section ul {
   list-style: none;
   padding: 0;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .recent-section li {
   margin-bottom: 0.5rem;
-  color: #d4d4d4;
-  font-size: 0.95rem;
 }
 
 .continue-btn {
-  margin-top: 2rem;
-  padding: 0.8rem 2rem;
-  border: none;
-  border-radius: 30px;
   background: #ff6b9d;
-  color: white;
-  font-size: 1rem;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 0.7rem 1.5rem;
+  margin-top: 1.5rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
+
 .continue-btn:hover {
-  background: #ff85b3;
+  background: #ff88b3;
   transform: scale(1.05);
 }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 
