@@ -82,21 +82,25 @@ function showErrorMessage(message) {
 function unlockWebsite() {
   isUnlocked = true;
   document.getElementById('passwordOverlay').classList.add('hidden');
-  document.body.style.overflow = 'auto';
-
-  // 🌹 Show apology first
+  
+  // 🌹 Show apology page
   const apologyPage = document.getElementById('apologyPage');
   apologyPage.classList.remove('hidden');
-  setTimeout(() => apologyPage.classList.add('show'), 100);
+  document.body.style.overflow = 'hidden'; // ❌ Disable scrolling
+
+  setTimeout(() => apologyPage.classList.add('show'), 50);
 
   document.getElementById('continueButton').addEventListener('click', () => {
     apologyPage.classList.remove('show');
+
     setTimeout(() => {
       apologyPage.style.display = 'none';
-      initializeWebsite(); // ← your existing function that loads the main site
-    }, 800);
+      document.body.style.overflow = 'auto'; // ✅ Re-enable scrolling when main page loads
+      initializeWebsite(); // load main site
+    }, 600);
   });
 }
+
 
 
 
@@ -496,5 +500,6 @@ document.querySelectorAll('.moment-image img').forEach(img => {
 });
 
 console.log('💖 Our Story in Moments - Love timeline loaded successfully! 💖');
+
 
 
