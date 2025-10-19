@@ -799,41 +799,50 @@ body {
   background: radial-gradient(circle at center, #1c1b29 0%, #0f0f15 100%);
   color: #f4f0ff;
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: flex-start;
-  overflow-y: auto; /* 👈 enables scrolling for long content */
   text-align: center;
+  flex-direction: column;
   z-index: 1000;
   opacity: 0;
   transition: opacity 1s ease;
-  padding: 3rem 1rem; /* 👈 gives breathing room at top/bottom */
 }
 
 #apologyPage.show {
   opacity: 1;
 }
 
+.hidden {
+  display: none;
+}
+
 .apology-container {
   max-width: 700px;
-  margin: 5rem auto; /* 👈 centers content with margin top */
+  width: 90%;
+  margin: 6rem auto 4rem auto; /* 👈 adds breathing space top & bottom */
   padding: 2rem 1.5rem;
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 20px;
-  box-shadow: 0 0 30px rgba(255, 107, 157, 0.2);
+  box-shadow: 0 0 30px rgba(255, 107, 157, 0.25);
   backdrop-filter: blur(10px);
+  overflow: visible; /* 👈 allows content to expand naturally */
+  max-height: none; /* 👈 removes any hidden height cap */
+  text-align: center;
 }
 
 .apology-container h1 {
   font-family: 'Dancing Script', cursive;
-  font-size: 2rem;
+  font-size: 2.3rem;
   color: #ff6b9d;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
 }
 
 .apology-text {
   font-size: 1rem;
-  line-height: 1.7;
-  color: #e3e3e3;
+  line-height: 1.8;
+  color: #f0f0f0;
+  text-align: justify; /* 👈 makes it more readable for longer text */
   margin-bottom: 2rem;
 }
 
@@ -870,4 +879,5 @@ body {
   background: #ff85b3;
   transform: scale(1.05);
 }
+
 
