@@ -1,3 +1,7 @@
+// Password protection
+const CORRECT_PASSWORD = '68304';
+let isUnlocked = false;
+
 // Initialize AOS (Animate On Scroll) library
 AOS.init({
     duration: 800,
@@ -15,7 +19,94 @@ const monthsElement = document.getElementById('months');
 const daysElement = document.getElementById('days');
 const musicToggle = document.getElementById('musicToggle');
 const backgroundMusic = document.getElementById('backgroundMusic');
+const passwordOverlay = document.getElementById('passwordOverlay');
+const passwordInput = document.getElementById('passwordInput');
+const unlockBtn = document.getElementById('unlockBtn');
+const errorMessage = document.getElementById('errorMessage');
 let isMusicPlaying = false;
+
+// Password validation functions
+function validatePassword() {
+    const enteredPassword = passwordInput.value.trim();
+    
+    if (enteredPassword === CORRECT_PASSWORD) {
+        unlockWebsite();
+        return true;
+    } else {
+        showErrorMessage('Incorrect code. Please try again.');
+        passwordInput.value = '';
+        passwordInput.focus();
+        return false;
+    }
+}
+
+function showErrorMessage(message) {
+    errorMessage.textContent = message;
+    errorMessage.classList.add('show');
+    
+    setTimeout(() => {
+        errorMessage.classList.remove('show');
+    }, 3000);
+}
+
+function unlockWebsite() {
+    isUnlocked = true;
+    
+    // Hide password overlay with animation
+    passwordOverlay.classList.add('hidden');
+    
+    // Enable body scroll
+    document.body.style.overflow = 'auto';
+    
+    // Start the main website functionality
+    setTimeout(() => {
+        initializeWebsite();
+        passwordOverlay.style.display = 'none';
+    }, 800);
+}
+
+function initializeWebsite() {
+    // Initial counter update
+    updateCounter();
+    
+    // Update counter every minute
+    setInterval(updateCounter, 60000);
+    
+    // Load images
+    loadImages();
+    
+    // Add touch optimizations
+    addTouchOptimizations();
+    
+    // Start floating hearts animation
+    setTimeout(createFloatingHearts, 2000);
+    
+    // Add loading state management
+    window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+        
+        // Trigger initial animations
+        const moments = document.querySelectorAll('.moment');
+        moments.forEach((moment, index) => {
+            setTimeout(() => {
+                moment.style.opacity = '0';
+                moment.style.transform = 'translateY(50px)';
+            }, index * 100);
+        });
+    });
+}
+
+// Password event listeners
+passwordInput.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        validatePassword();
+    }
+});
+
+unlockBtn.addEventListener('click', validatePassword);
+
+// Prevent scrolling when password overlay is active
+document.body.style.overflow = 'hidden';
 
 // Update counter function
 function updateCounter() {
@@ -218,6 +309,30 @@ function createFloatingHearts() {
     }, 3000);
 }
 
+// Create floating hearts for password screen
+function createPasswordHearts() {
+    setInterval(() => {
+        const heart = document.createElement('div');
+        heart.innerHTML = '💖';
+        heart.style.cssText = `
+            position: fixed;
+            top: 100vh;
+            left: ${Math.random() * 100}vw;
+            font-size: ${Math.random() * 15 + 8}px;
+            opacity: ${Math.random() * 0.3 + 0.3};
+            pointer-events: none;
+            z-index: 10001;
+            animation: floatUp 6s linear forwards;
+        `;
+        
+        document.body.appendChild(heart);
+        
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }, 4000);
+}
+
 // Touch and mobile optimizations
 function addTouchOptimizations() {
     // Prevent zoom on double tap for iOS
@@ -268,36 +383,15 @@ window.addEventListener('scroll', throttle(function() {
     }
 }, 16));
 
-// Initialize everything when DOM is loaded
+// Initialize password protection when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Initial counter update
-    updateCounter();
+    // Focus on password input
+    setTimeout(() => {
+        passwordInput.focus();
+    }, 500);
     
-    // Update counter every minute
-    setInterval(updateCounter, 60000);
-    
-    // Load images
-    loadImages();
-    
-    // Add touch optimizations
-    addTouchOptimizations();
-    
-    // Start floating hearts animation
-    setTimeout(createFloatingHearts, 2000);
-    
-    // Add loading state management
-    window.addEventListener('load', function() {
-        document.body.classList.add('loaded');
-        
-        // Trigger initial animations
-        const moments = document.querySelectorAll('.moment');
-        moments.forEach((moment, index) => {
-            setTimeout(() => {
-                moment.style.opacity = '0';
-                moment.style.transform = 'translateY(50px)';
-            }, index * 100);
-        });
-    });
+    // Add some floating hearts to the password screen
+    createPasswordHearts();
 });
 
 // Handle window resize for responsive adjustments
