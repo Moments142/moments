@@ -858,7 +858,7 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
+ 
 .continue-btn:hover {
   background: #ff85b3;
   transform: scale(1.05);
@@ -867,3 +867,4 @@ body {
 .hidden {
   display: none;
 }
+
