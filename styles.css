@@ -792,107 +792,64 @@ body {
   from { transform: scale(0.7); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
-/* 🌹 Full Apology Page */
+/* 🌹 Apology Page */
 #apologyPage {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100vh;
-  background: radial-gradient(circle at top left, #1a1a1d, #0a0a0b);
-  color: #fff;
+  height: 100%;
+  background: radial-gradient(circle at top left, #1c1b29, #0f0e17);
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* disables scroll completely */
-  z-index: 9999; /* fully covers all other content */
-  visibility: hidden;
+  flex-direction: column;
+  text-align: center;
   opacity: 0;
-  transition: opacity 0.6s ease-in-out, visibility 0s 0.6s;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  z-index: 10000;
 }
 
-#apologyPage.active {
-  visibility: visible;
+#apologyPage.show {
   opacity: 1;
-  transition: opacity 0.6s ease-in-out;
+  pointer-events: all;
 }
 
-/* 🌸 Center Card */
 .apology-container {
-  width: 85%;
-  max-width: 520px;
-  max-height: 90vh;
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(12px);
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1.5rem 1.2rem;
   border-radius: 20px;
   box-shadow: 0 0 25px rgba(255, 107, 157, 0.25);
-  padding: 1.8rem 1.5rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  backdrop-filter: blur(10px);
+  font-size: 0.85rem; /* 👈 smaller font */
+  line-height: 1.6;
+  color: #f2f2f2;
+  text-align: justify;
+  overflow: hidden;
 }
 
-/* 🌷 Title */
 .apology-container h1 {
   font-family: 'Dancing Script', cursive;
-  font-size: 1.6rem;
   color: #ff6b9d;
   margin-bottom: 0.8rem;
+  font-size: 1.8rem; /* 👈 smaller title */
 }
 
-/* 💌 Main text */
-.apology-text {
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.85rem;
-  line-height: 1.45;
-  color: #f0f0f0;
-  text-align: justify;
-  margin-bottom: 1.2rem;
-}
-
-/* ✨ Recent Section */
-.recent-section {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.8rem 1rem;
-  border-radius: 10px;
-  text-align: left;
-  font-size: 0.8rem;
-  color: #f0f0f0;
-}
-
-.recent-section h2 {
-  text-align: center;
-  color: #ff91b6;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.recent-section ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.recent-section li {
-  margin-bottom: 0.4rem;
-}
-
-/* 💞 Continue Button */
 .continue-btn {
-  background: #ff6b9d;
-  color: #fff;
+  margin-top: 1.2rem;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.9rem;
+  background: linear-gradient(45deg, #ff6b9d, #fcb045);
   border: none;
   border-radius: 25px;
-  padding: 0.6rem 1.3rem;
-  margin-top: 1.2rem;
+  color: white;
   cursor: pointer;
-  font-size: 0.9rem;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: transform 0.3s ease;
 }
 
 .continue-btn:hover {
-  background: #ff88b3;
   transform: scale(1.05);
 }
-
 
