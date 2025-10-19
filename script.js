@@ -39,6 +39,36 @@ function validatePassword() {
         return false;
     }
 }
+// ======= Full Image Modal Functionality =======
+const modal = document.getElementById('imageModal');
+const modalImg = document.getElementById('modalImage');
+const modalQuote = document.getElementById('modalQuote');
+const closeModalBtn = document.querySelector('.close-modal');
+
+document.querySelectorAll('.moment').forEach(moment => {
+  const img = moment.querySelector('.moment-image img');
+  const quote = moment.querySelector('.moment-text blockquote');
+  
+  img.addEventListener('click', () => {
+    modal.style.display = 'block';
+    modalImg.src = img.src;
+    modalQuote.textContent = quote.textContent;
+    document.body.style.overflow = 'hidden'; // Prevent background scroll
+  });
+});
+
+closeModalBtn.addEventListener('click', () => {
+  modal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+});
+
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+});
+
 
 function showErrorMessage(message) {
     errorMessage.textContent = message;
