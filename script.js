@@ -50,20 +50,19 @@ function showErrorMessage(message) {
 // ===== UNLOCK WEBSITE =====
 function unlockWebsite() {
   isUnlocked = true;
-  passwordOverlay.classList.add('hidden');
+  document.getElementById('passwordOverlay').classList.add('hidden');
   document.body.style.overflow = 'auto';
 
-  // 🌹 Show the apology page first
+  // 🌹 Show apology first
   const apologyPage = document.getElementById('apologyPage');
   apologyPage.classList.remove('hidden');
   setTimeout(() => apologyPage.classList.add('show'), 100);
 
-  // Wait for user to click "Continue" to show main website
   document.getElementById('continueButton').addEventListener('click', () => {
     apologyPage.classList.remove('show');
     setTimeout(() => {
       apologyPage.style.display = 'none';
-      initializeWebsite(); // Now load your main page
+      initializeWebsite(); // ← your existing function that loads the main site
     }, 800);
   });
 }
@@ -250,4 +249,5 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 console.log('💖 Our Story in Moments - Love timeline loaded successfully! 💖');
+
 
